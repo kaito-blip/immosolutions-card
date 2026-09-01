@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Zekry;Gabriel;;;
+FN:Gabriel Zekry
+ORG:Immo Solutions
+TITLE:Gründer
+TEL;TYPE=CELL,VOICE:+41793566146
+EMAIL;TYPE=WORK,INTERNET:immosolutions@zekry.ch
+URL:https://immosolutionsswiss.com
+ADR;TYPE=WORK:;;;Basel;;;Schweiz
+NOTE:Off-Market Gewerbeflächen — Kauf, Verkauf & Miete, schweizweit. Seit 1995.
+END:VCARD

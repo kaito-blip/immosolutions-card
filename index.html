@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gabriel Zekry — Immo Solutions</title>
+<meta name="description" content="Digitale Visitenkarte — Gabriel Zekry, Gründer Immo Solutions, Basel. Off-Market Gewerbeflächen in der ganzen Schweiz.">
+<meta name="robots" content="noindex,follow">
+<meta name="theme-color" content="#0b0d12">
+<link rel="icon" href="assets/favicon.svg">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Immo Solutions">
+<meta property="og:title" content="Gabriel Zekry — Immo Solutions">
+<meta property="og:description" content="Gründer · Immo Solutions · Basel · Off-Market Gewerbeflächen Schweiz">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,440..640;1,9..144,440..600&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  :root{
+    --ink:#0b0d12;--ink-2:#12151d;--paper:#f4f2ec;--card:#fdfcf9;--ivory:#f2efe7;
+    --blue:#2b59ff;--blue-soft:#8fa5ff;--muted:#5b5f68;
+    --serif:"Fraunces",Georgia,"Times New Roman",serif;
+    --sans:'Helvetica Neue',Arial,sans-serif;
+  }
+  html,body{height:100%}
+  body{min-height:100svh;background:radial-gradient(1200px 700px at 50% -10%,#fbfaf6,var(--paper));
+    font-family:var(--sans);color:var(--ink);
+    display:flex;align-items:center;justify-content:center;padding:34px 18px;overflow-x:hidden;position:relative}
+  body::before{content:'';position:fixed;right:-14vw;bottom:-22vh;width:70vh;height:70vh;pointer-events:none;
+    background:conic-gradient(from 45deg,transparent 0 25%,rgba(43,89,255,.05) 0 50%,transparent 0 75%,rgba(43,89,255,.05) 0);
+    transform:rotate(45deg);filter:blur(2px);opacity:.5}
+  .wrap{width:100%;max-width:430px;position:relative;z-index:2}
+
+  /* ===== CARD ===== */
+  .scene{perspective:1400px}
+  .card{position:relative;width:100%;aspect-ratio:1.586;transform-style:preserve-3d;
+    transition:transform .8s cubic-bezier(.2,.85,.25,1);cursor:pointer}
+  .card.flipped{transform:rotateY(180deg)}
+  .face{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+    overflow:hidden;background:linear-gradient(155deg,#ffffff 0%,var(--card) 46%,var(--ivory) 100%);
+    border:1px solid rgba(11,13,18,.09);
+    box-shadow:0 30px 60px -20px rgba(11,13,18,.32),0 8px 22px rgba(11,13,18,.10),inset 0 1px 0 rgba(255,255,255,.9)}
+  .face::before{content:'';position:absolute;inset:0;border-radius:16px;pointer-events:none;
+    background:radial-gradient(120% 90% at 82% 0%,rgba(43,89,255,.06),transparent 55%)}
+  .shine{position:absolute;inset:-40%;pointer-events:none;mix-blend-mode:overlay;opacity:.6;
+    background:linear-gradient(115deg,transparent 42%,rgba(43,89,255,.14) 50%,transparent 58%);
+    transform:translateX(-70%);animation:sweep 6s ease-in-out infinite}
+  @keyframes sweep{0%,60%{transform:translateX(-75%)}84%,100%{transform:translateX(75%)}}
+
+  /* diamond glyph */
+  .dia{display:inline-block;vertical-align:middle}
+  .dia svg{display:block}
+
+  /* front */
+  .front .brandrow{position:absolute;top:12%;left:8.5%;display:flex;align-items:center;gap:11px}
+  .front .wordmark{font-family:var(--serif);font-optical-sizing:auto;font-size:clamp(23px,7vw,31px);
+    font-weight:440;letter-spacing:-.3px;line-height:1;color:var(--ink)}
+  .front .wordmark b{font-weight:600}
+  .front .sub{position:absolute;top:31.5%;left:8.7%;font-size:clamp(7.5px,2.2vw,9.5px);font-weight:700;
+    letter-spacing:4.5px;color:var(--blue)}
+  .front .tag{position:absolute;bottom:23%;left:8.7%;font-family:var(--serif);font-style:italic;
+    font-size:clamp(12px,3.6vw,16px);color:var(--muted);letter-spacing:.2px;max-width:70%}
+  .front .ghost{position:absolute;right:-6%;bottom:-30%;pointer-events:none;opacity:.05}
+  .front .loc{position:absolute;bottom:11.5%;left:8.7%;font-size:clamp(7px,2vw,9px);letter-spacing:3px;
+    color:var(--muted);font-weight:600}
+  .front .baseline{position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--blue)}
+  .front .baseline::before{content:'';position:absolute;left:0;right:0;top:-1px;height:1px;background:rgba(11,13,18,.10)}
+
+  /* back */
+  .back{transform:rotateY(180deg)}
+  .back .edge{position:absolute;top:0;bottom:0;left:0;width:5px;background:var(--blue)}
+  .back .name{position:absolute;top:13%;left:9.5%;font-family:var(--serif);font-size:clamp(20px,6vw,27px);
+    font-weight:560;letter-spacing:-.3px;color:var(--ink)}
+  .back .role{position:absolute;top:29%;left:9.7%;font-size:clamp(7.5px,2.2vw,9.5px);font-weight:700;
+    letter-spacing:4px;color:var(--blue)}
+  .back .rule{position:absolute;top:39.5%;left:9.7%;width:24%;height:1.5px;background:rgba(11,13,18,.16)}
+  .back .lines{position:absolute;top:48%;left:9.7%;font-size:clamp(10px,3vw,12.5px);line-height:2.02;
+    color:var(--ink-2);letter-spacing:.3px}
+  .back .lines b{color:var(--blue);font-weight:700;display:inline-block;width:1.5em}
+  .back .glyph{position:absolute;top:12.5%;right:8.5%;opacity:.9}
+  .back .brand{position:absolute;bottom:9.5%;right:8.5%;font-family:var(--serif);font-size:clamp(8.5px,2.4vw,10.5px);
+    font-weight:560;letter-spacing:.4px;color:var(--muted)}
+
+  .hint{text-align:center;margin-top:16px;font-size:10.5px;letter-spacing:3px;color:var(--muted);
+    font-weight:600;text-transform:uppercase;opacity:.7}
+
+  /* ===== ACTIONS ===== */
+  .btns{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:11px}
+  .btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:15px 12px;border-radius:12px;
+    font-size:13.5px;font-weight:700;letter-spacing:.3px;text-decoration:none;color:var(--ink);
+    border:1px solid rgba(11,13,18,.12);background:rgba(255,255,255,.7);backdrop-filter:blur(6px);
+    transition:transform .15s ease,background .15s ease,border-color .15s ease}
+  .btn:active{transform:scale(.97)}
+  .btn:hover{border-color:rgba(43,89,255,.4)}
+  .btn-primary{grid-column:1 / -1;background:var(--blue);border-color:var(--blue);color:#fff;
+    box-shadow:0 14px 30px -12px rgba(43,89,255,.55);font-size:15px;padding:17px}
+  .foot{margin-top:32px;text-align:center;font-size:9.5px;letter-spacing:3px;color:var(--muted);
+    font-weight:600;opacity:.7}
+  .foot a{color:inherit;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="scene">
+    <div class="card" id="card" role="button" aria-label="Visitenkarte umdrehen" tabindex="0">
+      <div class="face front">
+        <div class="shine"></div>
+        <div class="ghost">
+          <svg width="240" height="300" viewBox="0 0 100 125"><path d="M50 8l40 54-40 55-40-55z" fill="#2b59ff"/></svg>
+        </div>
+        <div class="brandrow">
+          <span class="dia">
+            <svg width="30" height="30" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#2b59ff"/><path d="M50 22l22 28-22 28-22-28z" fill="none" stroke="#fff" stroke-width="6"/></svg>
+          </span>
+          <span class="wordmark">Immo&nbsp;<b>Solutions</b></span>
+        </div>
+        <div class="sub">GABRIEL&nbsp;ZEKRY</div>
+        <div class="tag">Off-Market Gewerbeflächen — schweizweit, seit 1995</div>
+        <div class="loc">BASEL&nbsp;·&nbsp;SWITZERLAND</div>
+        <div class="baseline"></div>
+      </div>
+      <div class="face back">
+        <div class="shine"></div>
+        <div class="edge"></div>
+        <div class="name">Gabriel Zekry</div>
+        <div class="role">GRÜNDER</div>
+        <div class="rule"></div>
+        <div class="lines">
+          <b>T</b>+41 79 356 61 46<br>
+          <b>@</b>immosolutions@zekry.ch<br>
+          <b>W</b>immosolutionsswiss.com
+        </div>
+        <div class="glyph">
+          <svg width="26" height="26" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#2b59ff"/><path d="M50 22l22 28-22 28-22-28z" fill="none" stroke="#fff" stroke-width="6"/></svg>
+        </div>
+        <div class="brand">Immo&nbsp;Solutions</div>
+      </div>
+    </div>
+  </div>
+  <div class="hint">Tippen zum Umdrehen</div>
+
+  <div class="btns">
+    <a class="btn btn-primary" href="gabriel-zekry.vcf" download>Kontakt speichern</a>
+    <a class="btn" href="tel:+41793566146">Anrufen</a>
+    <a class="btn" href="mailto:immosolutions@zekry.ch">E-Mail</a>
+    <a class="btn" href="https://wa.me/41793566146">WhatsApp</a>
+    <a class="btn" href="https://immosolutionsswiss.com">Website</a>
+  </div>
+
+  <div class="foot"><a href="https://immosolutionsswiss.com">IMMO&nbsp;SOLUTIONS&nbsp;·&nbsp;BASEL&nbsp;·&nbsp;SWITZERLAND</a></div>
+</div>
+
+<script>
+(function(){
+  var card=document.getElementById('card'),flipped=false,raf=null;
+  function flip(){
+    flipped=!flipped;
+    card.style.transition='';
+    card.style.transform='';
+    card.classList.toggle('flipped',flipped);
+  }
+  card.addEventListener('click',flip);
+  card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();flip()}});
+
+  // 3D-Tilt (Desktop-Pointer)
+  var scene=card.parentElement;
+  scene.addEventListener('pointermove',function(e){
+    if(e.pointerType!=='mouse')return;
+    var r=card.getBoundingClientRect();
+    var px=(e.clientX-r.left)/r.width-.5, py=(e.clientY-r.top)/r.height-.5;
+    if(raf)cancelAnimationFrame(raf);
+    raf=requestAnimationFrame(function(){
+      card.style.transition='transform .1s ease-out';
+      card.style.transform='rotateY('+((flipped?180:0)+px*10)+'deg) rotateX('+(-py*10)+'deg)';
+    });
+  });
+  scene.addEventListener('pointerleave',function(e){
+    if(e.pointerType && e.pointerType!=='mouse')return;
+    card.style.transition='transform .8s cubic-bezier(.2,.85,.25,1)';
+    card.style.transform=flipped?'rotateY(180deg)':'';
+  });
+
+  // Gyro-Tilt (Mobile), dezent — pausiert waehrend der Flip-Animation
+  if(window.DeviceOrientationEvent && 'ontouchstart' in window){
+    var gyroPause=0;
+    card.addEventListener('click',function(){gyroPause=Date.now()+900});
+    window.addEventListener('deviceorientation',function(e){
+      if(e.gamma===null||Date.now()<gyroPause)return;
+      var gx=Math.max(-14,Math.min(14,e.gamma))/1.6, gy=Math.max(-14,Math.min(14,e.beta-45))/2.2;
+      card.style.transition='transform .18s ease-out';
+      card.style.transform='rotateY('+((flipped?180:0)+gx)+'deg) rotateX('+(-gy)+'deg)';
+    },true);
+  }
+})();
+</script>
+</body>
+</html>

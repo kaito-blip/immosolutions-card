@@ -1,0 +1,39 @@
+{
+  "formatVersion": 1,
+  "passTypeIdentifier": "pass.ch.immosolutions.card",
+  "serialNumber": "gabriel-zekry-001",
+  "teamIdentifier": "REPLACE_WITH_APPLE_TEAM_ID",
+  "organizationName": "Immo Solutions",
+  "description": "Immo Solutions — Gabriel Zekry",
+  "logoText": "Immo Solutions",
+  "foregroundColor": "rgb(255,255,255)",
+  "backgroundColor": "rgb(43,89,255)",
+  "labelColor": "rgb(224,231,255)",
+  "generic": {
+    "primaryFields": [
+      { "key": "name", "label": "", "value": "Gabriel Zekry" }
+    ],
+    "secondaryFields": [
+      { "key": "role", "label": "POSITION", "value": "Gründer" },
+      { "key": "loc", "label": "STANDORT", "value": "Basel" }
+    ],
+    "auxiliaryFields": [
+      { "key": "phone", "label": "TELEFON", "value": "+41 79 356 61 46" },
+      { "key": "email", "label": "E-MAIL", "value": "immosolutions@zekry.ch" }
+    ],
+    "backFields": [
+      { "key": "web", "label": "Website", "value": "https://immosolutionsswiss.com" },
+      { "key": "phone2", "label": "Telefon", "value": "+41 79 356 61 46" },
+      { "key": "email2", "label": "E-Mail", "value": "immosolutions@zekry.ch" },
+      { "key": "about", "label": "Immo Solutions", "value": "Off-Market Gewerbeflächen — Kauf, Verkauf & Miete, schweizweit. Seit 1995." }
+    ]
+  },
+  "barcodes": [
+    {
+      "format": "PKBARCODE_FORMAT_QR",
+      "message": "https://kaito-blip.github.io/immosolutions-card/",
+      "messageEncoding": "iso-8859-1",
+      "altText": "immosolutionsswiss.com"
+    }
+  ]
+}
